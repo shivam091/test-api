@@ -11,6 +11,7 @@ class ApplicationRecord < ActiveRecord::Base
   def self.assign_or_new(attributes, &block)
     object = where(attributes).first || new
     object.assign_attributes(yield)
+    object.assign_attributes(attributes)
     object
   end
 end
