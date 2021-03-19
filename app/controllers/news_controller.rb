@@ -9,7 +9,7 @@ class NewsController < ApplicationController
       @news = ::News.all
       json_response(@news)
     else
-      json_response(result.message + ": " + result.payload[:exception])
+      json_response(result.message)
     end
   end
 end

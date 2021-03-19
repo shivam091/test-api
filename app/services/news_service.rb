@@ -18,9 +18,9 @@ class NewsService
       create_news(news)
       ServiceResponse.success(message: "All news fetched")
     rescue RestClient::Unauthorized => exception
-      ServiceResponse.error(message: "Failed to fetch news", payload: { exception: exception.to_s })
+      ServiceResponse.error(message: exception.to_s)
     rescue RestClient::Exceptions::Timeout => exception
-      ServiceResponse.error(message: "Failed to fetch news due to timeout", payload: { exception: exception.to_s })
+      ServiceResponse.error(message: exception.to_s)
     end
   end
 
