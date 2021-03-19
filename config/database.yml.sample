@@ -8,7 +8,7 @@ development:
   <<: *default
   host: localhost
   port: 5432
-  database: test-project-dev
+  database: test-api-dev
   username: root
   password: root
 
