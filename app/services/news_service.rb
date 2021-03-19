@@ -27,19 +27,19 @@ class NewsService
   private
 
   def fetch_news
-    news = JSON.parse(RestClient.get(BASE_URL + @api_key, timeout: 1))["articles"]
+    news = JSON.parse(RestClient::Request.execute(method: :get, url: BASE_URL + @api_key, timeout: 1))["articles"]
     news
   end
 
   def create_news(news)
     news.each do |news|
-      ::News.find_or_create_by(title: news["title"]) do |news|
-        news.author = news["author"],
-        news.description = news["description"],
-        news.url = news["url"],
-        news.image_url = news["urlToImage"],
-        news.published_at = news["publishedAt"],
-        news.content = news["content"]
+      ::News.find_or_create_by(title: news["title"]) do |news_detail|
+        news_detail.author = news["author"],
+        news_detail.description = news["description"],
+        news_detail.url = news["url"],
+        news_detail.image_url = news["urlToImage"],
+        news_detail.published_at = news["publishedAt"],
+        news_detail.content = news["content"]
       end
     end
   end
