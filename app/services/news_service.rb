@@ -27,7 +27,7 @@ class NewsService
   private
 
   def fetch_news
-    news = JSON.parse(RestClient::Request.execute(method: :get, url: BASE_URL + @api_key, timeout: 1))["articles"]
+    news = JSON.parse(RestClient::Request.execute(method: :get, url: BASE_URL + @api_key, timeout: 10))["articles"]
     news
   end
 
